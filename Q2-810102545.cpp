@@ -35,7 +35,15 @@ vector<int> Calculate(string &equation, int numOfTokens){
     return result;
 
 }
+int NumOfUniqeAns(vector<int> &result){
+    
+    sort(result.begin() ,result.end());
+    auto it  = unique(result.begin() , result.end());
 
+    result.erase(it ,result.end());
+
+    return result.size();
+}
 
 int main(){
 
@@ -45,5 +53,8 @@ int main(){
 
     string equation;
     cin >> equation;
+    
+    vector<int> result = Calculate(equation ,numOfTokens);
+    cout <<NumOfUniqeAns(result);
 
 }
