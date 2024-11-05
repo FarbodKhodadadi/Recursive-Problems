@@ -5,6 +5,23 @@
 
 using namespace std;
 
+vector<int> HandleInput(){
+
+    string input;
+    cin.ignore();
+    getline(cin ,input);
+    vector<int> numStudents;
+    stringstream s(input);
+    int token;
+
+    while(s >> token){
+        numStudents.push_back(token);
+    }
+
+    return numStudents;
+
+}
+
 
 
 int main(){
