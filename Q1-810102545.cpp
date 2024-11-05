@@ -13,6 +13,22 @@ const int DIMENSION =8 ;
 typedef vector<vector<string>> GamesBoard; 
 
 
+void Queens(int &count ,GamesBoard &board ,int col){
+
+    if(col == DIMENSION){
+        count ++;
+        return;
+    }
+
+    for(int i=0 ; i<DIMENSION; i++){
+        if(board[i][col] != OBSTACLE && Check(board, i, col)){
+            board[i][col]= OCCUPIED;
+            Queens(count, board, col+1);
+            board[i][col]= EMPTY;
+        }
+    }
+}
+
 int main(){
 
     GamesBoard board( DIMENSION , vector<string>(DIMENSION));
