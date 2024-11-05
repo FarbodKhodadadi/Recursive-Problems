@@ -10,9 +10,31 @@ const char PLUS = '+';
 const char MINUS = '-';
 const char MULTIPLY = '*';
 
+vector<int> Calculate(string &equation, int numOfTokens){
+    vector<int> result;
 
+    if(equation.length()==1) result.push_back(stoi(equation));
+    else{
+        for(int i=1 ; i<numOfTokens ; i+=2){
 
+            string leftEq = equation.substr(0,i);
+            string rightEq = equation.substr(i+1,numOfTokens);
 
+            vector<int> reslutLeft=Calculate(leftEq,leftEq.length());
+            vector<int> reslutRight=Calculate(rightEq,rightEq.length());
+
+            for(auto left : reslutLeft){
+                for(auto right : reslutRight){
+                    if(equation[i] == PLUS) result.push_back(left + right);
+                    else if(equation[i] == MINUS) result.push_back(left - right);
+                    else if(equation[i] == MULTIPLY) result.push_back(left * right);
+                }
+            }
+        }
+    }
+    return result;
+
+}
 
 
 int main(){
