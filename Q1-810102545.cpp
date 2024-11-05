@@ -25,6 +25,10 @@ bool Check(GamesBoard &board,int row, int col){
     for (int i = 1; i < DIMENSION; i++) {
         if((col-i)>=0 && (row-i)>=0){ //upper left
             if(board[row-i][col-i] == OCCUPIED) return false;}
+        if((col+i)<=7 && (row-i)>=0){ //upper right 
+            if(board[row-i][col+i] == OCCUPIED) return false;}
+        if((col-i)>=0 && (row+i)<=7){ // bottom left
+            if(board[row+i][col-i] == OCCUPIED) return false;}
         if((col+i)<=7 && (row+i)<=7){ // bottom right
             if(board[row+i][col+i]== OCCUPIED) return false;}
     }
