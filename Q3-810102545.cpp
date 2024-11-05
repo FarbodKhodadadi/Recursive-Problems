@@ -41,6 +41,13 @@ void CalShirini(vector<int> &numStudents ,vector<int> &diff , int lastIdx){
         diff.push_back((numStudents[lastIdx-1]-numStudents[lastIdx-2]));
     }
 }
+void Count(vector<int> shirini ){
+    int count=0;
+    for(int i=0; i<shirini.size(); i++){
+        count += shirini[i];
+    }
+    cout << count;
+}
 
 int main(){
 
@@ -50,5 +57,5 @@ int main(){
     cin >> numSchools;
     
     numStudents = HandleInput();
-
+    Count(shirini);
 }
