@@ -11,7 +11,28 @@ const string OBSTACLE = "*";
 const int DIMENSION =8 ;
 
 typedef vector<vector<string>> GamesBoard; 
+bool Check(GamesBoard &board,int row, int col){
+        
+    for (int i = 0; i < row; i++) {
+        if (board[i][col] == OCCUPIED)
+            return false;
+    }
+    for (int i = 0; i <col; i++) {
+        if (board[row][i] == OCCUPIED)
+            return false;
+    }
 
+    for (int i = 1; i < DIMENSION; i++) {
+        if((col-i)>=0 && (row-i)>=0){ //upper left
+            if(board[row-i][col-i] == OCCUPIED) return false;}
+        if((col+i)<=7 && (row+i)<=7){ // bottom right
+            if(board[row+i][col+i]== OCCUPIED) return false;}
+    }
+    
+        
+    return true;
+    
+}
 
 void Queens(int &count ,GamesBoard &board ,int col){
 
