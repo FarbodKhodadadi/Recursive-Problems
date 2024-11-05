@@ -21,8 +21,26 @@ vector<int> HandleInput(){
     return numStudents;
 
 }
+void CalShirini(vector<int> &numStudents ,vector<int> &diff , int lastIdx){
+    if(lastIdx>2){
+        if((numStudents[lastIdx-1]-numStudents[lastIdx-2]) > abs(numStudents[lastIdx-1]-numStudents[lastIdx-3])){
 
-
+            diff.push_back((numStudents[lastIdx-1]-numStudents[lastIdx-3]));
+            numStudents.pop_back();
+            numStudents.pop_back();
+            CalShirini(numStudents , diff , numStudents.size());
+        }
+        else{
+           
+            diff.push_back((numStudents[lastIdx-1]-numStudents[lastIdx-2]));
+            numStudents.pop_back();
+            CalShirini(numStudents , diff , numStudents.size());
+        }
+    }
+    else if(lastIdx==2){
+        diff.push_back((numStudents[lastIdx-1]-numStudents[lastIdx-2]));
+    }
+}
 
 int main(){
 
