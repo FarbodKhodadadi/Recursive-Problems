@@ -57,5 +57,6 @@ int main(){
     cin >> numSchools;
     
     numStudents = HandleInput();
+    CalShirini(numStudents ,shirini, numSchools);
     Count(shirini);
 }
