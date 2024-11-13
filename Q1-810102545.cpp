@@ -11,6 +11,18 @@ const string OBSTACLE = "*";
 const int DIMENSION =8 ;
 
 typedef vector<vector<string>> GamesBoard; 
+void ReadInput(GamesBoard &board) {
+    
+    string input;
+    for (int i = 0; i < DIMENSION; i++) {
+        
+        getline(cin, input);
+        for(int j=0 ; j< DIMENSION ;j++){
+
+            board[i][j]=string(1 ,input[j]);
+        }
+    }
+}
 bool Check(GamesBoard &board,int row, int col){
         
     for (int i = 0; i < row; i++) {
